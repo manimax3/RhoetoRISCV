@@ -35,7 +35,7 @@ auto imm12_def
     = ((x3::lit("0x") >> x3::hex) | x3::uint_) | (('-' >> imm12)[invert]);
 auto insarg_def = (imm12 >> '(' >> reg >> ')') | reg | imm12;
 
-bool parse(std::string input)
+bool parse(std::string input, std::vector<ast::AsmStatement> &out)
 {
     using x3::_attr;
     using x3::double_;
@@ -54,6 +54,11 @@ bool parse(std::string input)
         std::cout << (last - first) << std::endl;
         return false;
     }
+
+    if (r) {
+        out = std::move(output);
+    }
+
     return r;
 }
 

@@ -1,8 +1,6 @@
 add_library(rhoetoriscv SHARED 
 	asm.h
-	test.h
 	parser.h
-	test.cpp
 	parser.cpp)
 
 add_executable(rrv main.cpp)

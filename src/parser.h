@@ -5,7 +5,6 @@
 #include <variant>
 #include <vector>
 
-bool parse(std::string input);
 /*
  *
  * Assembler Program: Directive | Label | Statement
@@ -32,4 +31,7 @@ struct Label {
 };
 
 using AsmStatement = boost::variant<Instruction, Directive, Label>;
+
 }
+
+bool parse(std::string input, std::vector<ast::AsmStatement> &output);
